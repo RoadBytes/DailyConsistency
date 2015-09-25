@@ -1,0 +1,6 @@
+= bootstrap_form_tag(layout: :horizontal, control_col: "col-sm-6") do |f|
+  %header
+    %h1 Sign in
+  = f.email_field :email, label: "Email Address"
+  = f.password_field :password
+  = f.submit value: "Sign in", class: "btn btn-default"

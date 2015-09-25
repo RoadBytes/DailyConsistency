@@ -7,8 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render "partials/navigation" %>
 
-<%= yield %>
+  <section class="sign_in container">
+    <%= flash_messages %>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <%= yield %>
+      </div>
+    </div>
+  </section>
 
 </body>
 </html>

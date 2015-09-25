@@ -1,0 +1,18 @@
+%h4
+  = "Welcome #{current_user.name}"
+
+.well
+  %h5 Your Current Goals and Habits:
+  - @goals.each do |goal|
+    %ul.list-group
+      %li.list-group-item.active
+        %h4
+          = goal.description
+      - goal.habits.each do |habit|
+        %li.list-group-item
+          = habit.description
+  = link_to "Add Goal", new_goal_path
+.well
+  = bootstrap_form_for(@note, control_col: "col-sm-6") do |f|
+    = f.text_area :body, label: "Note for #{@note.show_date}", rows: 5
+    = f.submit "Save Entry"
