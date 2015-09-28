@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :require_user
 
   def update
     @note = Note.find_by(id_param)

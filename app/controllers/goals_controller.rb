@@ -7,7 +7,8 @@ class GoalsController < ApplicationController
   end
 
   def new
-    @goal = Goal.new
+    @goal  = Goal.new
+    @habit = Habit.new
   end
 
   def create
@@ -17,17 +18,36 @@ class GoalsController < ApplicationController
       redirect_to goals_path
     else
       flash[:error] = "Goal was not saved."
-      render "goals/new"
+      render :new
     end
   end
 
   def edit
     @goal = Goal.find_by(id: params[:id])
+    if @goal.user_id != current_user.id
+      flash[:error] = "Action Not Allowed"
+      redirect_to goals_path
+    end
+  end
+
+  def update
+    @goal  = Goal.find_by(id: params[:id])
+    if @goal.update(goal_params)
+      redirect_to goals_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    goal = Goal.find_by(id: params[:id])
+    goal.delete if goal.user_id == current_user.id
+    redirect_to goals_path
   end
 
   private
 
   def goal_params
-    params.require(:goal).permit(:description)
+    params.require(:goal).permit(:description, :habit)
   end
 end

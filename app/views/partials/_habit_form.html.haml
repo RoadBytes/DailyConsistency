@@ -1,0 +1,6 @@
+%br
+.well
+  %h3 Goal: #{goal.description}
+  = bootstrap_form_for [goal, habit] do |f|
+    = f.text_field :description, label: "Edit Habit Description"
+    = f.submit

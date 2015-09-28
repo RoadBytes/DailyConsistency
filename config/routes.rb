@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
   resources :notes, only: [:update]
 
-  resources :goals
+  resources :goals, except: [:index, :show] do
+    resources :habits, only: [:create, :edit, :update, :destroy]
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do
