@@ -9,8 +9,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  get    'goals',  to: 'goals#goals'
-  # resources :goals, only: :show
+  get    'home',   to: 'users#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   get  '/register' => 'users#new'
+
   resources :users, only: [:create]
 
   resources :notes, only: [:update]

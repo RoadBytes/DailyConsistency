@@ -4,3 +4,8 @@
   = bootstrap_form_for [goal, habit] do |f|
     = f.text_field :description, label: "Edit Habit Description"
     = f.submit
+
+= link_to 'Delete', url_for(action: :destroy,
+  goal_id: goal.id, id: habit.id),
+  method: :delete, data: {confirm: "Are you sure?"},
+  class: "btn btn-danger pull-right"

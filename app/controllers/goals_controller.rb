@@ -1,11 +1,6 @@
 class GoalsController < ApplicationController
   before_action :require_user
 
-  def goals
-    @goals = current_user.goals
-    @note  = Note.get_note(day: Date.today, user: current_user.id)
-  end
-
   def new
     @goal  = Goal.new
     @habit = Habit.new
@@ -15,7 +10,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params.merge!(user_id: current_user.id))
     if @goal.save
       flash[:success] = "Goal was saved!"
-      redirect_to goals_path
+      redirect_to home_path
     else
       flash[:error] = "Goal was not saved."
       render :new
@@ -26,14 +21,14 @@ class GoalsController < ApplicationController
     @goal = Goal.find_by(id: params[:id])
     if @goal.user_id != current_user.id
       flash[:error] = "Action Not Allowed"
-      redirect_to goals_path
+      redirect_to home_path
     end
   end
 
   def update
     @goal  = Goal.find_by(id: params[:id])
     if @goal.update(goal_params)
-      redirect_to goals_path
+      redirect_to home_path
     else
       render :edit
     end
@@ -42,7 +37,7 @@ class GoalsController < ApplicationController
   def destroy
     goal = Goal.find_by(id: params[:id])
     goal.delete if goal.user_id == current_user.id
-    redirect_to goals_path
+    redirect_to home_path
   end
 
   private

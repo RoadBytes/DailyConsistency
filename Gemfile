@@ -31,6 +31,7 @@ gem 'haml-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'pg'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

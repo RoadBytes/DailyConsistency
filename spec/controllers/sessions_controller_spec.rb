@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe SessionsController do
   describe "GET #new" do
-    it "redirects to goals_path if there's a current_user" do
+    it "redirects to home_path if there's a current_user" do
       session[:user_id] = create(:user).id
       get :new
-      expect(response).to redirect_to goals_path
+      expect(response).to redirect_to home_path
     end
   end
 
@@ -22,8 +22,8 @@ describe SessionsController do
         expect(session[:user_id]).to eq(signed_in_user.id)
       end
 
-      it "redirects to goals_path" do 
-        expect(response).to redirect_to goals_path 
+      it "redirects to home_path" do 
+        expect(response).to redirect_to home_path 
       end
 
       it "has a flash success message" do

@@ -1,18 +1,47 @@
 require 'spec_helper'
 
 describe UsersController do
+  let(:authenticated_user) { create(:user) }
+
   describe "GET #welcome" do
     it "renders welcome template with no authenticated user" do
       get :welcome
       expect(response).to render_template :welcome
     end
 
-    it "redirects to goals_path with authenticated user" do
+    it "redirects to home_path with authenticated user" do
       session[:user_id] = create(:user)
       get :welcome
-      expect(response).to redirect_to(goals_path)
+      expect(response).to redirect_to(home_path)
     end
   end
+
+  describe "GET #show" do
+    context "with authenticated user" do
+      before :each do
+        session[:user_id] = authenticated_user.id
+        get :show
+      end
+
+      it "sets @goals to user's goals" do
+        expect(assigns(:goals)).to eq authenticated_user.goals
+      end
+
+      it "sets @note for current day" do
+        expect(assigns(:note).date).to eq(Date.today.to_datetime)
+      end
+
+      it "renders show template" do
+        expect(response).to render_template :show
+      end
+    end
+
+    it "redirects to root_path with unauthenticated user" do
+      get :show
+      expect(response).to redirect_to root_path
+    end
+  end
+
 
   describe "GET #new" do
     it "sets @user" do
@@ -32,7 +61,7 @@ describe UsersController do
       end
 
       it "redirects to home_path with valid input" do
-        expect(response).to redirect_to goals_path
+        expect(response).to redirect_to home_path
       end
     end
 

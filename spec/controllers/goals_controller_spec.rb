@@ -4,32 +4,6 @@ describe GoalsController do
   let(:authenticated_user) { create(:user) }
   let(:other_user)         { create(:user) }
 
-  describe "GET #goals" do
-    context "with authenticated user" do
-      before :each do
-        session[:user_id] = authenticated_user.id
-        get :goals
-      end
-
-      it "sets @goals to user's goals" do
-        expect(assigns(:goals)).to eq authenticated_user.goals
-      end
-
-      it "sets @note for current day" do
-        expect(assigns(:note).date).to eq(Date.today.to_datetime)
-      end
-
-      it "renders goals template" do
-        expect(response).to render_template :goals
-      end
-    end
-
-    it "redirects to root_path with unauthenticated user" do
-      get :goals
-      expect(response).to redirect_to root_path
-    end
-  end
-
   describe "GET #new" do
     it "sets @goal" do
       session[:user_id] = authenticated_user.id
@@ -90,8 +64,8 @@ describe GoalsController do
           expect(flash[:success]).to_not be_blank
         end
 
-        it "redirects to goals_path" do
-          expect(response).to redirect_to goals_path
+        it "redirects to home_path" do
+          expect(response).to redirect_to home_path
         end
       end
     end
@@ -119,8 +93,8 @@ describe GoalsController do
         get :edit, id: goal_to_edit.id
       end
 
-      it "redirects to goals_path" do
-        expect(response).to redirect_to goals_path
+      it "redirects to home_path" do
+        expect(response).to redirect_to home_path
       end
 
       it "sets flash[:error] message" do
@@ -149,8 +123,8 @@ describe GoalsController do
         expect(@goal.description).to eq "Kick Coding Ass"
       end
 
-      it "redirects to the goals_path" do
-        expect(response).to redirect_to goals_path
+      it "redirects to the home_path" do
+        expect(response).to redirect_to home_path
       end
     end
 
@@ -176,7 +150,7 @@ describe GoalsController do
       it "redirects to goals path" do
         goal_to_edit = create(:goal, user_id: other_user.id)
         put :update, id: goal_to_edit.id, goal: attributes_for(:goal)
-        expect(response).to redirect_to goals_path
+        expect(response).to redirect_to home_path
       end
     end
 
@@ -201,8 +175,8 @@ describe GoalsController do
         expect(Goal.all.size).to eq 0
       end
 
-      it "redirects to goals_path" do 
-        expect(response).to redirect_to goals_path
+      it "redirects to home_path" do 
+        expect(response).to redirect_to home_path
       end
     end
 

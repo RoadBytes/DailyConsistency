@@ -20,8 +20,8 @@ describe HabitsController do
           expect(Habit.first.goal_id).to eq(goal.id)
         end
 
-        it "redirects_to goals_path" do
-          expect(response).to redirect_to goals_path
+        it "redirects_to home_path" do
+          expect(response).to redirect_to home_path
         end
       end
 
@@ -79,8 +79,8 @@ describe HabitsController do
         expect(@habit.description).to eq "Kick Coding Ass"
       end
 
-      it "redirects to the goals_path" do
-        expect(response).to redirect_to goals_path
+      it "redirects to the home_path" do
+        expect(response).to redirect_to home_path
       end
     end
 
@@ -104,6 +104,49 @@ describe HabitsController do
         expect(response).to render_template :edit
       end
     end
-    describe "DELETE #destroy"
+
+    context "unauthenticated user" do
+      it "redriects to root_path" do
+        @habit = create(:habit, goal_id: goal.id, description: "Be sucky")
+        put :update, goal_id: goal.id, id: @habit.id, habit: attributes_for(:habit, description: "")
+        expect(response).to redirect_to root_path
+      end
+
+    end
+  end
+
+  describe "DELETE #destroy" do
+    context "authenticated user" do
+      before :each do
+        session[:user_id] = authenticated_user.id
+        @habit = create(:habit, goal_id: goal.id)
+        delete :destroy, goal_id: goal.id, id: @habit.id
+      end
+
+      it "should remove habit from db" do
+        expect(Habit.all.size).to eq 0
+      end
+
+      it "redirects to home_path" do 
+        expect(response).to redirect_to home_path
+      end
+    end
+
+    context "non associated user" do
+      it "does not delete non current_user queue items" do
+        session[:user_id]  = authenticated_user.id
+        other_user         = create(:user)
+        @other_users_goal  = create(:goal, user_id: other_user.id)
+        @other_users_habit = create(:habit, goal_id: @other_users_goal.id)
+        delete :destroy, goal_id: @other_users_goal.id, id: @other_users_habit.id
+        expect(Habit.all.size).to eq 1
+      end
+
+      it "redirects to root_path for unauthenticated users" do
+        @habit = create(:habit, goal_id: goal.id)
+        delete :destroy, goal_id: goal.id, id: @habit.id
+        expect(response).to redirect_to root_path
+      end
+    end
   end
 end

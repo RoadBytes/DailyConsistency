@@ -5,7 +5,7 @@ class NotesController < ApplicationController
     @note = Note.find_by(id_param)
     if @note.update(note_body_param)
       flash[:success] = "Note Saved"
-      redirect_to goals_path
+      redirect_to home_path
     else
       flash[:error] = "Sorry there has been an error"
       redirect_to :back

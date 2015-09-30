@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+  before_action :require_user, only: [:show]
+
   def welcome
-    redirect_to goals_path if current_user
+    redirect_to home_path if current_user
+  end
+
+  def show
+    @goals = current_user.goals
+    @note  = Note.get_note(day: Date.today, user: current_user.id)
   end
 
   def new
@@ -13,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome, you are now registered"
       session[:user_id] = @user.id
-      redirect_to goals_path
+      redirect_to home_path
     else
       render 'new'
     end

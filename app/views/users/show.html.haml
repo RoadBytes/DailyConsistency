@@ -1,0 +1,30 @@
+%h4
+  = "Welcome #{current_user.name}"
+
+.well
+  %h5 Your Current Goals and Habits:
+  - @goals.each do |goal|
+    %ul.list-group
+      %li.list-group-item.active
+        %h4
+          = goal.description
+          %span
+            = link_to "Edit Goal Description", edit_goal_path(goal), class: "label label-info pull-right"
+      - goal.habits.each do |habit|
+        %li.list-group-item
+          = habit.description
+          %span
+            = link_to "Edit Habit Description", edit_goal_habit_path(goal, habit), class: "label label-info pull-right"
+      %div
+        %li.list-group-item.habit-create-form
+          = bootstrap_form_for [goal, Habit.new], layout: :inline do |new_habit|
+            = new_habit.text_field :description, label: "New Habit Description:"
+            = new_habit.submit "Add New Habit", class: "btn btn-info"
+        .btn.btn-default.habit-create-button
+          Show Habit From
+
+  = link_to "Add Goal", new_goal_path, class: "btn btn-info"
+.well
+  = bootstrap_form_for(@note, control_col: "col-sm-6") do |f|
+    = f.text_area :body, label: "Note for #{@note.show_date}", rows: 5
+    = f.submit "Save Entry"

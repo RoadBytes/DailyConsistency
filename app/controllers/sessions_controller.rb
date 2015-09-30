@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to goals_path if current_user
+    redirect_to home_path if current_user
   end
 
   def create
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Welcome my child"
-      redirect_to goals_path
+      redirect_to home_path
     else
       flash[:error] = "Error please try again"
       render :new
