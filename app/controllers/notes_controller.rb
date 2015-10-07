@@ -12,6 +12,10 @@ class NotesController < ApplicationController
     end
   end
 
+  def show
+    @note = Note.find_by(id_param)
+  end
+
   private
 
   def note_body_param

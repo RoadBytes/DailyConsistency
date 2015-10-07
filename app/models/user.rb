@@ -9,5 +9,15 @@ class User < ActiveRecord::Base
   has_secure_password 
 
   has_many  :goals
-  has_many  :notes
+  has_many  :notes, -> { order(:date)}
+
+  def next_note(current_note)
+    current_index = self.notes.index(current_note)
+    notes[current_index + 1].nil? ? current_note : self.notes[current_index + 1]
+  end
+
+  def previous_note(current_note)
+    current_index = self.notes.index(current_note)
+    current_index == 0 ? current_note : self.notes[current_index - 1]
+  end
 end

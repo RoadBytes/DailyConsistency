@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @goals = current_user.goals
     @note  = Note.get_note(day: Date.today, user: current_user.id)
   end
 
@@ -32,4 +31,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :name)
   end
 
+  def current_note_param
+    params.permit(:id)
+  end
 end

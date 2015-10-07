@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe Note do
-  it { should validate_presence_of(:date) }
+  it { should belong_to(:user)}
   it { should validate_presence_of(:date) }
 
   describe ".get_note(day: date_argument, user: user_argument)" do
-
     context "Without a preexisting note" do
       let(:note) { Note.get_note(day: Date.today, user: 1) }
 

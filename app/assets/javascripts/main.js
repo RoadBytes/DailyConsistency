@@ -1,5 +1,6 @@
-$(document).ready(function () {
+var pageloaded = function () {
   $(".habit-create-form").hide();
+
   $(".habit-create-button").on('click', function () {
     var $form = $(this).siblings(".habit-create-form");
     $form.slideToggle();
@@ -9,4 +10,7 @@ $(document).ready(function () {
       return text == "Hide Habit Form" ? "Show Habit Form" : "Hide Habit Form";
     })
   });
-});
+};
+
+$(document).ready(pageloaded);
+$(document).on('page:load', pageloaded);

@@ -1,0 +1,9 @@
+.well
+  = bootstrap_form_for(note, control_col: "col-sm-6") do |f|
+    = f.text_area :body, label: "Note for #{note.show_date}", rows: 5
+    = f.submit "Save Entry"
+
+  .row 
+    <br>
+    = link_to "Next Note", note_path(current_user.next_note note), class: "pull-right"
+    = link_to "Previous Note", note_path(current_user.previous_note note), class: "pull-left"

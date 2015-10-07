@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create]
 
-  resources :notes, only: [:update]
+  resources :notes, only: [:update, :show]
 
   resources :goals, except: [:index, :show] do
     resources :habits, only: [:create, :edit, :update, :destroy]
