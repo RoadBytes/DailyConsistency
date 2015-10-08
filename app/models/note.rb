@@ -1,3 +1,5 @@
+require 'sad_panda'
+
 class Note < ActiveRecord::Base
   validates  :date, presence: true
   belongs_to :user
@@ -9,5 +11,13 @@ class Note < ActiveRecord::Base
 
   def show_date
     date.strftime("%D")
+  end
+
+  def emotion
+    SadPanda.emotion(self.body)
+  end
+
+  def positivity
+    SadPanda.polarity(self.body)
   end
 end

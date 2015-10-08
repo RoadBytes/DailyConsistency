@@ -34,6 +34,9 @@ gem 'pg'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#emotional analysis
+gem 'sad_panda'
+
 group :development, :test do
   gem "rspec-rails", "~> 2.99"
   gem "factory_girl_rails", "~> 4.2.1"
