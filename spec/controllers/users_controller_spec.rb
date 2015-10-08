@@ -23,10 +23,6 @@ describe UsersController do
         get :show
       end
 
-      it "sets @goals to user's goals" do
-        expect(assigns(:goals)).to eq authenticated_user.goals
-      end
-
       it "sets @note for current day" do
         expect(assigns(:note).date).to eq(Date.today.to_datetime)
       end
