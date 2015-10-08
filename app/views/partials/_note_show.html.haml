@@ -3,6 +3,9 @@
     = f.text_area :body, label: "Note for #{note.show_date}", rows: 5
     = f.submit "Save Entry"
 
+  - unless note.body.nil?
+    %h3 Emotional state: #{note.emotion.capitalize}
+
   .row 
     <br>
     = link_to "Next Note", note_path(current_user.next_note note), class: "pull-right"
