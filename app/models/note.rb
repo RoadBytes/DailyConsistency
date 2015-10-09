@@ -1,5 +1,3 @@
-require 'sad_panda'
-
 class Note < ActiveRecord::Base
   validates  :date, presence: true
   belongs_to :user
