@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     current_index = self.notes.index(current_note)
     current_index == 0 ? current_note : self.notes[current_index - 1]
   end
+
+  def set_notes
+    notes.group_by{|note| note.date.to_date}
+  end
 end
