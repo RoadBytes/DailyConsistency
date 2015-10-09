@@ -1,0 +1,10 @@
+.row
+  %h4.col-xs-12
+    = "Welcome #{current_user.name}"
+
+.row
+  .col-sm-6
+    = render "partials/goal_list"
+
+  .col-sm-6
+    = render "partials/note_show", note: @note

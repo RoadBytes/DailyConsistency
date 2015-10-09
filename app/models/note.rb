@@ -18,4 +18,8 @@ class Note < ActiveRecord::Base
   def positivity
     SadPanda.polarity(self.body)
   end
+
+  def word_count
+    body.split.size
+  end
 end
