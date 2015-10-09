@@ -21,7 +21,7 @@ describe Note do
       end
 
       it "returns note with body equal to nil when user doesn't have a note for that day" do
-        expect(note.body).to eq(nil)
+        expect(note.body).to eq("")
       end
     end
 
