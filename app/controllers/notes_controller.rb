@@ -18,7 +18,7 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.find_by(id_param)
+    @note = Note.where(id: id_param).first
     # @note = Note.where(id: params[:id], user_id: current_user.id ).first
     redirect_to home_path if @note.blank?
     # unless current_user.notes.include?(@note)
