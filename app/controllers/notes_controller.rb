@@ -19,15 +19,19 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find_by(id_param)
-    redirect_to home_path unless current_user.notes.include?(@note)
+    # @note = Note.where(id: params[:id], user_id: current_user.id ).first
+    redirect_to home_path if @note.blank?
+    # unless current_user.notes.include?(@note)
   end
 
   private
 
+  # TODO: consider name: strong_note_params
   def note_body_param
     params.require(:note).permit(:body)
   end
 
+  # TODO: consider name: strong_note_params
   def id_param
     params.permit(:id)
   end

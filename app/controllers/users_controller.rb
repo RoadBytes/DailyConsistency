@@ -6,9 +6,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @note  = Note.get_note(day: Date.today, user: current_user.id)
+    # TODO: move .get_note to User model
+    @note  = Note.get_note(day: Date.today, user: current_user )
   end
-
+ 
   def new
     @user = User.new
   end

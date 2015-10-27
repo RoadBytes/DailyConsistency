@@ -6,8 +6,7 @@ describe Note do
 
   describe ".get_note(day: date_argument, user: user_argument)" do
     context "Without a preexisting note" do
-      let(:note) { Note.get_note(day: Date.today, user: 1) }
-
+      let(:note) { Note.get_note(day: Date.today, user: stub(id: 1)) }
       it "returns a Note object" do
         expect(note).to be_a Note
       end
@@ -29,7 +28,7 @@ describe Note do
       new_user             = create(:user, id: 2)
       preexisting_note = create(:note, date: Date.today.to_datetime, user_id: new_user.id)
 
-      note = Note.get_note(day: Date.today, user: 2)
+      note = Note.get_note(day: Date.today, user: new_user)
       expect(note.id).to eq(preexisting_note.id)
     end
   end

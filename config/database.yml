@@ -3,11 +3,9 @@ development:
   encoding: unicode
   database: consistency_development
   pool: 5
-  username: postgres
 
 test:
   adapter: postgresql
   encoding: unicode
   database: consistency_test
   pool: 5
-  username: postgres
