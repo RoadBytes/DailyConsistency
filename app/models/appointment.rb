@@ -34,11 +34,7 @@ class Appointment
     end
   end
 
-  def self.grouped_appointments(time_zone = nil)
-    if time_zone.nil?
-      list.group_by{|appointment| appointment.start_time.to_date}
-    else
-      list.group_by{|appointment| appointment.start_time.in_time_zone(time_zone).to_date}
-    end
+  def self.grouped_appointments time_zone = "UTC"
+    list.group_by{|appointment| appointment.start_time.in_time_zone(time_zone).to_date}
   end
 end

@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   def index
-    @appointments = Appointment.grouped_appointments Time.zone
+    @appointments = Appointment.grouped_appointments session[:time_zone]
   end
 
   def edit
@@ -19,8 +19,9 @@ class AppointmentsController < ApplicationController
   end
 
   def set_time_zone
-    Time.zone = ActiveSupport::TimeZone[params["selected_time_zone"]]
-    @appointments = Appointment.grouped_appointments Time.zone
+    time_object = ActiveSupport::TimeZone[params["selected_time_zone"]]
+    session[:time_zone] = time_object.name
+    @appointments = Appointment.grouped_appointments session[:time_zone]
     render "index"
   end
 end

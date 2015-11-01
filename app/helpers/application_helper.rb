@@ -14,6 +14,6 @@ module ApplicationHelper
   end
 
   def selected_time_zone
-    Time.zone
+    session[:time_zone] || Time.zone
   end
 end
