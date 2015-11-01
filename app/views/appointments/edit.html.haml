@@ -2,7 +2,7 @@
 %h2 Appointment for 
 .well
   %h1= "#{@appointment.start_time.in_time_zone(selected_time_zone).to_s(:long)}"
-  %h4= "Note: Time shown in #{Time.zone.name} time zone"
+  %h4= "Note: Time shown in #{selected_time_zone} time zone"
 %br
 = form_tag "/appointments/#{@appointment.id}", method: :put do
   = label_tag "Enter Your Email"
