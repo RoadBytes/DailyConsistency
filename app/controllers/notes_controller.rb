@@ -7,8 +7,8 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find_by(id_param)
-    if @note.update(note_body_param)
+    @note = Note.where(id_param).first
+    if @note.update(strong_note_params)
       flash[:success] = "Note Saved"
       redirect_to home_path
     else
@@ -18,20 +18,16 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.where(id: id_param).first
-    # @note = Note.where(id: params[:id], user_id: current_user.id ).first
-    redirect_to home_path if @note.blank?
-    # unless current_user.notes.include?(@note)
+    @note = Note.where(id_param).first
+    redirect_to home_path if @note.user_id != current_user.id
   end
 
   private
 
-  # TODO: consider name: strong_note_params
-  def note_body_param
+  def strong_note_params
     params.require(:note).permit(:body)
   end
 
-  # TODO: consider name: strong_note_params
   def id_param
     params.permit(:id)
   end

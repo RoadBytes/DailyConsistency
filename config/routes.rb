@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   resources :goals, except: [:index, :show] do
     resources :habits, only: [:create, :edit, :update, :destroy]
   end
+
+  resources :appointments, only: [:index, :edit, :update]
+  post 'appointment/set_time_zone', to: 'appointments#set_time_zone', as: :set_time_zone
   # Example resource route with options:
   #   resources :products do
   #     member do

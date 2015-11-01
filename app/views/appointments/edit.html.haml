@@ -1,0 +1,13 @@
+%br
+%h2 Appointment for 
+.well
+  %h1= "#{@appointment.start_time.in_time_zone(selected_time_zone).to_s(:long)}"
+  %h4= "Note: Time shown in #{Time.zone.name} time zone"
+%br
+= form_tag "/appointments/#{@appointment.id}", method: :put do
+  = label_tag "Enter Your Email"
+  = text_field_tag 'email'
+  = submit_tag "Looking Forward to Meeting You!", class: "btn btn-success"
+
+%li Leave your email in the form below and I'll send a Google Calendar appointment.
+%li For any questions or concerns, reach me at: <strong> jason.data@roadbytes.me </strong>

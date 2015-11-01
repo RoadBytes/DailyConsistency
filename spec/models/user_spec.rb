@@ -21,7 +21,37 @@ describe User do
     end
   end
 
-  # There is also this concept of User and only getting notes from current_user.  Should I put that logic in Note model?
+  describe "#get_note(day: date_argument)" do
+    context "Without a preexisting note" do
+      let(:user) { create(:user) }
+      let(:note) { user.get_note(day: Date.today) }
+
+      it "returns a Note object" do
+        expect(note).to be_a Note
+      end
+
+      it "returns note with date equal to date_argument" do
+        expect(note.date).to eq(Date.today.to_datetime)
+      end
+
+      it "returns note with user_id equal to user_argument" do
+        expect(note.user_id).to eq(user.id)
+      end
+
+      it "returns note with body equal to nil when user doesn't have a note for that day" do
+        expect(note.body).to eq("")
+      end
+    end
+
+    it "returns note that belongs to user" do
+      new_user         = create(:user, id: 2)
+      preexisting_note = create(:note, date: Date.today.to_datetime, user_id: new_user.id)
+
+      note = new_user.get_note(day: Date.today)
+      expect(note.id).to eq(preexisting_note.id)
+    end
+  end
+
   let(:logged_in_user)  { create(:user) }
   let(:first_note)      { create(:note, date: (Date.today - 1)) }
   let(:last_note)       { create(:note, date: (Date.today)) }

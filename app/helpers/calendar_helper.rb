@@ -10,7 +10,7 @@ module CalendarHelper
     delegate :content_tag, to: :view
 
     def table
-      content_tag :table, class: "calendar" do
+      content_tag :table, class: "table table-striped calendar" do
         header + week_rows
       end
     end
@@ -34,7 +34,7 @@ module CalendarHelper
     end
 
     def day_classes(day)
-      classes = []
+      classes = ["col-xs-2"]
       classes << "today" if day == Date.today
       classes << "notmonth" if day.month != date.month
       classes.empty? ? nil : classes.join(" ")

@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   has_many  :goals
   has_many  :notes, -> { order(:date)}
 
+  def get_note( args )
+    date = args[:date] || Date.today
+
+    note = Note.where(date: date.to_datetime, user_id: self.id).first
+    note || Note.create(date: Date.today.to_datetime, user_id: self.id)
+  end
+
   def next_note(current_note)
     current_index = self.notes.index(current_note)
     notes[current_index + 1].nil? ? current_note : self.notes[current_index + 1]

@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require twitter-bootstrap-calendar
+//= require detect_timezone
+//= require jquery.detect_timezone
 //= require_tree .

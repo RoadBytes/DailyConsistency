@@ -12,4 +12,8 @@ module ApplicationHelper
     end
     nil
   end
+
+  def selected_time_zone
+    Time.zone
+  end
 end

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
@@ -36,6 +38,13 @@ gem 'pg'
 
 #emotional analysis
 gem 'sad_panda'
+
+#appointments
+gem 'google_calendar'
+gem 'google-api-client'
+gem 'twitter-bootstrap-calendar'
+
+gem 'detect_timezone_rails'
 
 group :development, :test do
   gem "rspec-rails", "~> 2.99"

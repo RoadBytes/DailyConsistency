@@ -14,3 +14,7 @@ var pageloaded = function () {
 
 $(document).ready(pageloaded);
 $(document).on('page:load', pageloaded);
+
+$(document).ready(function(){
+  $('#detected_time_zone').set_timezone({format: 'city'});
+})
