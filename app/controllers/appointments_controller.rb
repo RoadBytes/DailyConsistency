@@ -11,7 +11,6 @@ class AppointmentsController < ApplicationController
     name       = params["name"]
     user_email = params["user_email"]
 
-
     cal = Appointment.set_calendar
     appointment = cal.find_or_create_event_by_id(params[:id]) do |e|
       e.title = name
@@ -25,6 +24,7 @@ class AppointmentsController < ApplicationController
     end
 
     appointment.save
+
     flash[:success] = "Great #{name}, I'll email a hangout link when I see the appointment."
     redirect_to appointments_path
   end
