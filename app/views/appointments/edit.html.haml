@@ -5,9 +5,20 @@
   %h4= "Note: Time shown in #{selected_time_zone} time zone"
 %br
 = form_tag "/appointments/#{@appointment.id}", method: :put do
-  = label_tag "Enter Your Email"
-  = text_field_tag 'email'
-  = submit_tag "Looking Forward to Meeting You!", class: "btn btn-success"
+  %table
+    %tr
+      %td
+        = label_tag 'name', "What do I call you?"
+      %td
+        = text_field_tag 'name'  
+    %tr
+      %td
+        = label_tag 'user_email', "Enter Your Email"
+      %td
+        = email_field_tag 'user_email', '', :required => true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}',  :placeholder=>'email address'
+    %tr
+      %td
+        = submit_tag "Looking Forward to Meeting You!", class: "btn btn-success"
 
-%li Leave your email in the form below and I'll send a Google Calendar appointment.
+%li Leave your name and email in the form above and I'll send a Google Calendar appointment.
 %li For any questions or concerns, reach me at: <strong> jason.data@roadbytes.me </strong>

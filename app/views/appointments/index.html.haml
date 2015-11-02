@@ -1,14 +1,15 @@
 %br
 = form_tag set_time_zone_path, method: :post do
   = select_tag "selected_time_zone", time_zone_options_for_select, id: "detected_time_zone"
-  = submit_tag "enter selected time zone"
+  = submit_tag "enter your time zone"
 
-%h4 Jason's Available Appointments for 
-%h2= "#{Date.today.strftime("%B %Y")} Time zone is set to #{selected_time_zone}"
+- if session[:time_zone]
+  %h4 Jason's Available Appointments for 
+  %h2= "#{Date.today.strftime("%B %Y")} Time zone is set to #{selected_time_zone}"
 
-= calendar Date.today do |date|
-  %p= date.day
-  - unless @appointments[date].nil?
-    -@appointments[date].each do |appointment|
-      - if appointment.title == "available"
-        %p= link_to "#{appointment.start_time.in_time_zone(selected_time_zone).strftime("%H:%M")} to #{appointment.end_time.in_time_zone(selected_time_zone).strftime("%H:%M")}", edit_appointment_path(appointment.id), class: "btn btn-info"
+  = calendar Date.today do |date|
+    %p= date.day
+    - unless @appointments[date].nil?
+      -@appointments[date].each do |appointment|
+        - if appointment.title == "available"
+          %p= link_to "#{appointment.start_time.in_time_zone(selected_time_zone).strftime("%H:%M")} to #{appointment.end_time.in_time_zone(selected_time_zone).strftime("%H:%M")}", edit_appointment_path(appointment.id), class: "btn btn-info"

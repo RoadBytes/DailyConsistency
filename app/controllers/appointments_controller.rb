@@ -8,13 +8,24 @@ class AppointmentsController < ApplicationController
   end
 
   def update
+    name       = params["name"]
+    user_email = params["user_email"]
+
+
     cal = Appointment.set_calendar
     appointment = cal.find_or_create_event_by_id(params[:id]) do |e|
-      e.title = params["email"]
+      e.title = name
+      e.attendees = [
+        { 'email' => user_email, 
+          'displayName' => name, 
+          'responseStatus' => 'accepted' }
+        ]
+      e.reminders = {'useDefault'  => false, 'overrides' => ['minutes' => 60, 'method' => "email"]}
+      e.extended_properties = {'shared' => {'sendNotifications' => 'true'}}
     end
 
     appointment.save
-
+    flash[:success] = "Great #{name}, I'll email a hangout link when I see the appointment."
     redirect_to appointments_path
   end
 
