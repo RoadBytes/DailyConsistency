@@ -12,11 +12,11 @@ class GoalsController < ApplicationController
       flash[:success] = "Goal was saved!"
       redirect_to home_path
     else
-      flash[:error] = "Goal was not saved."
+      flash[:error] = "Goal was not saved!"
       render :new
     end
   end
-
+ 
   def edit
     @goal = Goal.find_by(id: params[:id])
     if @goal.user_id != current_user.id
