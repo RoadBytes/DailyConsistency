@@ -16,4 +16,8 @@ module ApplicationHelper
   def selected_time_zone
     session[:time_zone] || Time.zone
   end
+
+  def format_time time
+    time.in_time_zone(selected_time_zone).strftime("%H:%M")
+  end
 end

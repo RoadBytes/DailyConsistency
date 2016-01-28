@@ -6,8 +6,8 @@ describe Goal do
   it { should have_many(:habits) }
 
   describe "#habit=" do
-    let (:goal)  {create(:goal)}
-    let (:habit) {create(:habit)}
+    let (:goal)  { create(:goal) }
+    let (:habit) { create(:habit) }
 
     it "associates goal to habit" do
       goal.habit= habit

@@ -1,0 +1,93 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AddDateToNote	db/migrate/20150921202902_add_date_to_note.rb	/^class AddDateToNote < ActiveRecord::Migration$/;"	c
+AddGoal	db/migrate/20150921194445_add_goal.rb	/^class AddGoal < ActiveRecord::Migration$/;"	c
+AddHabit	db/migrate/20150921201359_add_habit.rb	/^class AddHabit < ActiveRecord::Migration$/;"	c
+AddNote	db/migrate/20150921202421_add_note.rb	/^class AddNote < ActiveRecord::Migration$/;"	c
+AddUser	db/migrate/20150921191340_add_user.rb	/^class AddUser < ActiveRecord::Migration$/;"	c
+AppCalendar	app/helpers/calendar_helper.rb	/^  class AppCalendar < Struct.new(:view, :date, :callback)$/;"	c	class:CalendarHelper
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Consistency
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+Appointment	app/models/appointment.rb	/^class Appointment$/;"	c
+AppointmentsController	app/controllers/appointments_controller.rb	/^class AppointmentsController < ApplicationController$/;"	c
+CalendarHelper	app/helpers/calendar_helper.rb	/^module CalendarHelper$/;"	m
+Consistency	config/application.rb	/^module Consistency$/;"	m
+Goal	app/models/goal.rb	/^class Goal < ActiveRecord::Base$/;"	c
+GoalsController	app/controllers/goals_controller.rb	/^class GoalsController < ApplicationController$/;"	c
+Habit	app/models/habit.rb	/^class Habit < ActiveRecord::Base$/;"	c
+HabitsController	app/controllers/habits_controller.rb	/^class HabitsController < ApplicationController$/;"	c
+Note	app/models/note.rb	/^class Note < ActiveRecord::Base$/;"	c
+NotesController	app/controllers/notes_controller.rb	/^class NotesController < ApplicationController$/;"	c
+SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
+block_client	app/controllers/application_controller.rb	/^  def block_client$/;"	f	class:ApplicationController
+bootstrap_class_for	app/helpers/application_helper.rb	/^  def bootstrap_class_for flash_type$/;"	f	class:ApplicationHelper
+calendar	app/helpers/calendar_helper.rb	/^  def calendar(date = Date.today, &block)$/;"	f	class:CalendarHelper
+change	db/migrate/20150921191340_add_user.rb	/^  def change$/;"	f	class:AddUser
+change	db/migrate/20150921194445_add_goal.rb	/^  def change$/;"	f	class:AddGoal
+change	db/migrate/20150921201359_add_habit.rb	/^  def change$/;"	f	class:AddHabit
+change	db/migrate/20150921202421_add_note.rb	/^  def change$/;"	f	class:AddNote
+change	db/migrate/20150921202902_add_date_to_note.rb	/^  def change$/;"	f	class:AddDateToNote
+create	app/controllers/goals_controller.rb	/^  def create$/;"	f	class:GoalsController
+create	app/controllers/habits_controller.rb	/^  def create$/;"	f	class:HabitsController
+create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
+create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
+current_note_param	app/controllers/users_controller.rb	/^  def current_note_param$/;"	f	class:UsersController
+current_user	app/controllers/application_controller.rb	/^  def current_user$/;"	f	class:ApplicationController
+day_cell	app/helpers/calendar_helper.rb	/^    def day_cell(day)$/;"	f	class:CalendarHelper.week_rows
+day_classes	app/helpers/calendar_helper.rb	/^    def day_classes(day)$/;"	f	class:CalendarHelper.week_rows
+default_body_to_empty_string	app/models/note.rb	/^  def default_body_to_empty_string$/;"	f	class:Note
+destroy	app/controllers/goals_controller.rb	/^  def destroy$/;"	f	class:GoalsController
+destroy	app/controllers/habits_controller.rb	/^  def destroy$/;"	f	class:HabitsController
+destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
+edit	app/controllers/appointments_controller.rb	/^  def edit$/;"	f	class:AppointmentsController
+edit	app/controllers/goals_controller.rb	/^  def edit$/;"	f	class:GoalsController
+edit	app/controllers/habits_controller.rb	/^  def edit$/;"	f	class:HabitsController
+emotion	app/models/note.rb	/^  def emotion$/;"	f	class:Note
+find_appointment	app/models/appointment.rb	/^  def self.find_appointment(search_id)$/;"	F	class:Appointment
+flash_messages	app/helpers/application_helper.rb	/^  def flash_messages(opts = {})$/;"	f	class:ApplicationHelper
+get_note	app/models/user.rb	/^  def get_note( args )$/;"	f	class:User
+goal_params	app/controllers/goals_controller.rb	/^  def goal_params$/;"	f	class:GoalsController
+grouped_appointments	app/models/appointment.rb	/^  def self.grouped_appointments time_zone = "UTC"$/;"	F	class:Appointment
+habit=	app/models/goal.rb	/^  def habit= habit_argument$/;"	f	class:Goal
+habit_params	app/controllers/habits_controller.rb	/^  def habit_params$/;"	f	class:HabitsController
+header	app/helpers/calendar_helper.rb	/^    def header$/;"	f	class:CalendarHelper
+id_param	app/controllers/notes_controller.rb	/^  def id_param$/;"	f	class:NotesController
+index	app/controllers/appointments_controller.rb	/^  def index$/;"	f	class:AppointmentsController
+index	app/controllers/notes_controller.rb	/^  def index$/;"	f	class:NotesController
+initialize	app/models/appointment.rb	/^  def initialize(google_object)$/;"	f	class:Appointment
+list	app/models/appointment.rb	/^  def self.list$/;"	F	class:Appointment
+logged_in?	app/controllers/application_controller.rb	/^  def logged_in?$/;"	f	class:ApplicationController
+new	app/controllers/goals_controller.rb	/^  def new$/;"	f	class:GoalsController
+new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
+new	app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
+next_note	app/models/user.rb	/^  def next_note(current_note)$/;"	f	class:User
+pageloaded	app/assets/javascripts/main.js	/^var pageloaded = function () {$/;"	f
+positivity	app/models/note.rb	/^  def positivity$/;"	f	class:Note
+previous_note	app/models/user.rb	/^  def previous_note(current_note)$/;"	f	class:User
+require_user	app/controllers/application_controller.rb	/^  def require_user$/;"	f	class:ApplicationController
+selected_time_zone	app/helpers/application_helper.rb	/^  def selected_time_zone$/;"	f	class:ApplicationHelper
+set_calendar	app/models/appointment.rb	/^  def self.set_calendar$/;"	F	class:Appointment
+set_notes	app/models/user.rb	/^  def set_notes$/;"	f	class:User
+set_time_zone	app/controllers/appointments_controller.rb	/^  def set_time_zone$/;"	f	class:AppointmentsController
+show	app/controllers/notes_controller.rb	/^  def show$/;"	f	class:NotesController
+show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
+show_date	app/models/note.rb	/^  def show_date$/;"	f	class:Note
+strong_note_params	app/controllers/notes_controller.rb	/^  def strong_note_params$/;"	f	class:NotesController
+table	app/helpers/calendar_helper.rb	/^    def table$/;"	f	class:CalendarHelper.AppCalendar
+timezoneset	app/assets/javascripts/main.js	/^var timezoneset = function() {$/;"	f
+update	app/controllers/appointments_controller.rb	/^  def update$/;"	f	class:AppointmentsController
+update	app/controllers/goals_controller.rb	/^  def update$/;"	f	class:GoalsController
+update	app/controllers/habits_controller.rb	/^  def update$/;"	f	class:HabitsController
+update	app/controllers/notes_controller.rb	/^  def update$/;"	f	class:NotesController
+user_params	app/controllers/users_controller.rb	/^  def user_params$/;"	f	class:UsersController
+week_rows	app/helpers/calendar_helper.rb	/^    def week_rows$/;"	f	class:CalendarHelper
+weeks	app/helpers/calendar_helper.rb	/^    def weeks$/;"	f	class:CalendarHelper.week_rows
+welcome	app/controllers/users_controller.rb	/^  def welcome$/;"	f	class:UsersController
+word_count	app/models/note.rb	/^  def word_count$/;"	f	class:Note

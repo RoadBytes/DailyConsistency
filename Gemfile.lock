@@ -224,8 +224,8 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
     sexp_processor (4.6.0)
-    shoulda-matchers (3.0.1)
-      activesupport (>= 4.0.0)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     signet (0.6.1)
       addressable (~> 2.3)
       extlib (~> 0.9)
@@ -301,4 +301,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

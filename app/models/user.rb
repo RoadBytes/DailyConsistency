@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_secure_password 
 
   has_many  :goals
-  has_many  :notes, -> { order(:date)}
+  has_many  :notes, -> { order(:date) }
 
   def get_note( args )
     date = args[:date] || Date.today

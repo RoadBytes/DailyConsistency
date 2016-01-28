@@ -4,12 +4,13 @@
   = submit_tag "enter your time zone"
 
 - if session[:time_zone]
-  %h4 Jason's Available Appointments for 
-  %h2= "#{Date.today.strftime("%B %Y")} Time zone is set to #{selected_time_zone}"
-
+  %h4 Jason's Available Appointments: Time zone is set to #{selected_time_zone}
+  %h2 #{Date.today.strftime("%B %Y")}
   = calendar Date.today do |date|
+    - string_date = date.to_s
     %p= date.day
-    - unless @appointments[date].nil?
-      -@appointments[date].each do |appointment|
-        - if appointment.title == "available"
-          %p= link_to "#{appointment.start_time.in_time_zone(selected_time_zone).strftime("%H:%M")} to #{appointment.end_time.in_time_zone(selected_time_zone).strftime("%H:%M")}", edit_appointment_path(appointment.id), class: "btn btn-info"
+    - unless @appointments[string_date].nil?
+      -@appointments[string_date].each do |appointment|
+        - if appointment.title == "available" 
+          %p= link_to "#{format_time appointment.start_time} to #{format_time appointment.end_time}", 
+                edit_appointment_path(appointment.id), class: "btn btn-info"
