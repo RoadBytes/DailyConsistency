@@ -9,6 +9,27 @@ describe User do
   it { should have_many(:goals) }
   it { should have_many(:notes).order(:date) }
 
+  describe "#posts_for_week" do
+    it "should return 0 for a given week with no notes" do
+      joe = create(:user)
+      expect(joe.post_for_week).to eq(0)
+    end
+
+    it "should return the number of notes for a given week"
+      # find date of post
+      # associate with week of year
+      # count number posts for that week
+    # Ruby Eloquent Ruby, ruby wizardry
+    # POODR Sandi Metz
+    # do
+    #   joe  = create(:user, password: "123456")
+    #   note = create(user: joe)
+    #   # when 
+    #   # then
+    #   # tear down
+    # end
+  end
+
   describe "#authenticate" do
     it "should return object when password is correct" do
       joe = create(:user, password: "123456")

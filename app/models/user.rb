@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
   def set_notes
     notes.group_by{|note| note.date.to_date}
   end
+
+  def posts_for_week
+    0
+  end
 end

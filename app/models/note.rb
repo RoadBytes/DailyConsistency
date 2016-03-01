@@ -4,7 +4,6 @@ class Note < ActiveRecord::Base
 
   before_save :default_body_to_empty_string
 
-
   def default_body_to_empty_string
     self.body ||= ""
   end
